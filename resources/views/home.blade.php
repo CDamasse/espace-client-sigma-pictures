@@ -15,8 +15,6 @@
                     @endif
 
                     You are logged in!
-
-                    {{ dump(Auth::user()->isAdmin()) }}
                 </div>
             </div>
         </div>
