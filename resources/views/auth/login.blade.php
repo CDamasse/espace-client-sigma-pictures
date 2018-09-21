@@ -11,6 +11,22 @@
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 
+                        @if(session('status_mail'))
+                            <div class="alert alert-success">
+                                {{ session('status_mail') }}
+                            </div>
+                        @endif
+                        @if (session('status'))
+                            <div class="alert alert-success">
+                                {{ session('status') }}
+                            </div>
+                        @endif
+                        @if (session('warning'))
+                            <div class="alert alert-warning">
+                                {{ session('warning') }} <br>
+                            </div>
+                        @endif
+
                         <div class="form-group row">
                             <label for="email" class="col-sm-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
@@ -58,7 +74,7 @@
                                 </button>
 
                                 <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    {{ __('Forgot Your Password?') }}
+                                    {{ __('1ère connexion ? modifiez votre mot de passe ici.') }}
                                 </a>
                             </div>
                         </div>

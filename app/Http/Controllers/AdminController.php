@@ -6,6 +6,12 @@ use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->Middleware('auth');
+        $this->middleware('isAdmin');
+    }
     /**
      * Display a listing of the resource.
      *

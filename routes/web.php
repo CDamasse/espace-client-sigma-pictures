@@ -21,3 +21,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('/admin','AdminController');
 Route::resource('/client', 'ClientController');
+
+Route::get('/user/verify/{token}', 'Auth\RegisterController@verifyUser')->name('verify.user');

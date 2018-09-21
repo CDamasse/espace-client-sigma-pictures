@@ -29,10 +29,15 @@ class LoginController extends Controller
      */
     protected function authenticated(Request $request, $user)
     {
-        if ($user->isAdmin()){
-            return redirect()->route('admin.index');
-        }else{
-            return redirect()->route('client.index');
+        if (!$user->verified) {
+            auth()->logout();
+            return back()->with('warning', 'Vous devez confirmer votre compte en cliquant sur le lien reçu par email !');
+        } elseif ($user->verified) {
+            if ($user->isAdmin()) {
+                return redirect()->route('admin.index');
+            } else {
+                return redirect()->route('client.index');
+            }
         }
     }
 

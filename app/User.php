@@ -32,4 +32,9 @@ class User extends Authenticatable
     {
         return (bool)$this->admin;
     }
+
+    public function verifyUser()
+    {
+        return $this->hasOne('App\VerifyUser');
+    }
 }
